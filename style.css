@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Robot:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+  .light {
+    --background_colorone:white;
+    --features_color:#666666;
+    --features_hovercolor:#f2f2f2;
+    --text_colorone:black;
+    --text_colortwo:white;
+    --btn_color:#000000;
+    --hoverColor:#666666;
+    --toggle_btncolor:#999999;
+    --settings_hovercolor:#595959;
+    
+    
+  }
+  .dark{
+    --background_colorone:#001a33;
+    --features_color:#a6a6a6;
+    --features_hovercolor:#f2f2f2;
+    --text_colorone:white;
+    --text_colortwo:black;
+    --btn_color:white;
+    --hoverColor:#ccebff;
+    --toggle_btncolor:#999999;
+    --settings_hovercolor:#595959;
+    
+  }
+*,
+*::before,
+*::after{
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box
+}
+body{
+    font-family: "Robot",sans-serif
+}
+
+.stop-scrolling{
+  height: 100%;
+  overflow: hidden;
+}
+img{
+    width: 60px;
+    margin-right: 2px;
+    margin-top: -1px;
+}
+a{
+    text-decoration: none;
+}
+.big-wrapper{
+  position: relative;
+  padding: 1.7rem 0.2rem;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color:var(--background_colorone);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container{
+  position: relative;
+  max-width: 81rem;
+  width:100%;
+  margin:0 auto;
+  padding:0 3rem;
+  z-index: 10;
+}
+
+header{
+  position: relative;
+  z-index: 70;
+}
+
+header .container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo h3{
+  color: var(--text_colorone);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.logo{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.links ul{
+  display: flex;
+  list-style: none;
+  align-items: center;
+
+}
+.links a{
+  color:var(--features_color);
+  margin-left: 40px;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s;
+}
+.links a:hover{
+  color: var(--features_hovercolor);
+  transform: scale(1.05);
+}
+.btn{
+  display: inline-block;
+  padding: 0.5rem 0.9rem;
+  color: var(--text_colortwo)!important;
+  background-color: var(--btn_color) ;
+  border-radius: 10px;
+  text-transform: capitalize;
+  transition: 0.3s;
+}
+.overlay{
+  display:none;
+}
+.hamburger-menu{
+  position: relative;
+  z-index: 99;
+  width: 2rem;
+  height: 2rem;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor:pointer;
+  display:none;
+}
+.hamburger-menu .bar{
+  position: relative;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+  transition: .5s;
+}
+
+.bar::before, 
+.bar::after{
+  content: " ";
+  position: absolute;
+  width:100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 3px;
+  transition: .5s;
+}
+.bar::before{
+   transform: translateY(-8px);
+}
+.bar::after{
+  transform: translateY(8px);
+} 
+
+.big-wrapper.active .hamburger-menu .bar{
+  background-color: transparent;
+}
+
+.big-wrapper.active .bar::before{
+  transform: translateY(0) rotate(-45deg);
+}
+
+.big-wrapper.active .bar::after{
+  transform: translateY(0) rotate(45deg);
+}
+.btn:hover{
+  background-color: var(--hoverColor);
+  transform: scale(1)!important;
+}
+.showcase-area .container{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  align-items: center;
+  justify-content: center;
+}
+.big-title{
+  font-size: 1.4rem;
+  color: var(--text_colorone);
+  text-transform: capitalize;
+  line-height: 1.4;
+}
+.text{
+  color: var(--text_colorone);
+  font-size: 1.1rem;
+  margin: 1.9rem 0 2.5rem;
+  max-width: 600px;
+  line-height: 2.3;
+}
+.showcase-area .btn{
+  box-shadow: 0 0 40px 2px rgba(0, 0, 0, 0.05);
+}
+.person{
+   width:123%;
+   transform: translate(15%,25px);
+   
+}
+.toggle-btn{
+  display: inline-block;
+  border: none;
+  border-radius: 100px;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--toggle_btncolor);
+  color:whitesmoke;
+  height: 39px;
+  width: 39px;
+  transition: 0.3s;
+}
+.big-wrapper.light .toggle-btn i:last-child{
+  display: none;
+}
+.big-wrapper.light .toggle-btn i:first-child{
+  display: block;
+}
+.big-wrapper.dark .toggle-btn i:last-child{
+  display: block;
+}
+.big-wrapper.dark .toggle-btn i:first-child{
+  display: none;
+}
+
+.toggle-btn:hover{
+  background:var(--settings_hovercolor) ;
+}
+.copy{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  animation: appear 1s 1 both;
+}
+@keyframes appear{
+   0%{
+    clip-path:circle(30% at -25% -25%);
+   }
+   100%{
+    clip-path:circle(150% at 0 0);
+   }
+}
+@media screen and (max-width: 870px){
+.hamburger-menu{
+  display:flex;
+}
+.links{
+  position:fixed;
+  top:0;
+  right:0;
+  max-width:450px;
+  width:100%;
+  height:100%;
+  background-color:var(--text_colorone);
+  z-index:95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(100%);
+  transition: 0.5s;
+}
+.links ul{
+  flex-direction: column; 
+}
+.links a{
+  color: var(--text_colortwo);
+  margin-left:0;
+  padding:2rem 0;
+}
+.links .btn{
+  background-color: none;
+}
+.overlay{
+  display:block;
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color: rgb(0,0,0,0.7);
+  opacity:0;
+  pointer-events:none;
+  transition: 0.5s;
+}
+.big-wrapper.active .links{
+   transform: translateX(0);
+   box-shadow: 0 0 50px 2px rgb(0,0,0,0.4);
+}
+.big-wrapper.active .overlay{
+  pointer-events:all;
+  opacity:1;
+}
+.showcase-area{
+  padding:2.5rem 0;
+  max-width:700px;
+  margin:0 auto;
+}
+.showcase-area .container{
+    grid-template-columns: 1fr;
+    justify-content: center;
+    grid-gap: 2rem;
+  }
+.big-title{
+  font-size: 1.1rem;
+}
+.text{
+  font-size: .95rem;
+  margin:1.4rem 0 1.5rem;
+}
+.person{
+  width: 100%;
+  transform: none;
+}
+.logo h3{
+  font-size: 1.25rem;
+}
+}
+@media screen and (max-width: 870px){
+}
+@media screen and(max-width:470px){
+  .container{
+    padding:0 1.5rem
+  }
+  .big-title{
+    font-size: 0.9rem;
+  }
+  .text{
+    margin:1.1rem 0 1.5rem;
+  }
+  .showcase-area .btn{
+    font-size:0.8rem;
+  }
+}
